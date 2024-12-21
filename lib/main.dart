@@ -24,10 +24,10 @@ class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   final PageController _pageController = PageController();
   bool _isLoggedIn = false; // Giriş durumu kontrolü
 
