@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-//import 'todo_page.dart'; // ToDoPage'yi içe aktarıyoruz
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.onLoginSuccess});
 
-  final Function (bool) onLoginSuccess; // Bu fonksiyonu ekliyoruz
+  final Function (bool) onLoginSuccess;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -13,20 +12,20 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String errorMessage = ''; // Hata mesajını tutan değişken
+  String errorMessage = ''; 
 
-  // Statik kullanıcı adı ve şifre
+  
   final String _correctUsername = 'sude123';
   final String _correctPassword = 'password123';
 
-  // Giriş kontrol fonksiyonu
+ 
   void _login() {
-    // Kullanıcı adı ve şifreyi kontrol et
+    
     if (_usernameController.text == _correctUsername && _passwordController.text == _correctPassword) {
-      // Giriş başarılı, To-Do sayfasına geçiş yap
-      widget.onLoginSuccess(true); // onLoginSuccess fonksiyonunu çağırıyoruz
+   
+      widget.onLoginSuccess(true); 
     } else {
-      // Giriş hatalı, hata mesajını göster
+      
       setState(() {
         errorMessage = 'Invalid username or password';
       });
@@ -38,12 +37,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      resizeToAvoidBottomInset: true, // Klavye taşmasını önler
-      body: SingleChildScrollView( // Kaydırılabilir alan
+      resizeToAvoidBottomInset: true, 
+      body: SingleChildScrollView( 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // Üstteki resim kısmı
+            
             SizedBox(
               height: 350,
               child: Stack(
@@ -64,8 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            // Boşluk ekleyerek Login başlığını aşağıya kaydırma
-            const SizedBox(height: 50), // Burada yüksekliği artırabilirsiniz.
+           
+            const SizedBox(height: 50), 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Column(
@@ -80,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  // Kullanıcı kutuları
+               
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -127,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Hata mesajı
+                 
                   if (errorMessage.isNotEmpty)
                     Text(
                       errorMessage,
@@ -136,14 +135,14 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            // Login butonu ve Create Account kısmı
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 children: [
-                  const SizedBox(height: 30), // Buton ile alan arasında boşluk
+                  const SizedBox(height: 30), 
                   GestureDetector(
-                    onTap: _login, // Giriş fonksiyonunu çağırır
+                    onTap: _login, 
                     child: Container(
                       height: 50,
                       margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -180,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-// Dalgalı kesim için kullanılan CustomClipper sınıfı
+
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

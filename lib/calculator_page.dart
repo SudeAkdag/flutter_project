@@ -7,16 +7,15 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class CalculatorState extends State<CalculatorPage> {
-  String output = ""; // Ekrandaki gösterim
-  String num1 = ""; // İlk sayı
-  String num2 = ""; // İkinci sayı
-  String operation = ""; // İşlem (+, -, *, /)
+  String output = ""; 
+  String num1 = ""; 
+  String num2 = ""; 
+  String operation = ""; 
 
-  // Sayı veya işlem tuşuna basıldığında çağrılacak fonksiyon
  void buttonPressed(String value) {
   setState(() {
     if (value == "AC") {
-      // Her şeyi sıfırla
+      
       output = "";
       num1 = "";
       num2 = "";
@@ -26,42 +25,42 @@ class CalculatorState extends State<CalculatorPage> {
         value == "*" ||
         value == "/" ||
         value == "%") {
-      // İşlem seçildiğinde
+      
       if (num1.isEmpty) {
-        num1 = output; // İlk sayıyı kaydet
-        output = ""; // Ekranı sıfırla
+        num1 = output; 
+        output = ""; 
       } else {
-        num2 = output; // İkinci sayıyı kaydet
-        _calculate(); // Hesaplama yap
-        num1 = output; // Sonuç num1'e kaydedilir
-        output = ""; // Ekranı sıfırla
+        num2 = output; 
+        _calculate(); 
+        num1 = output; 
+        output = ""; 
       }
       operation = value;
     } else if (value == "=") {
-      // Hesaplama yap
+      
       num2 = output;
-      _calculate(); // Hesaplama işlemi
+      _calculate(); 
     } else if (value == "+/-") {
-      // Sayının önüne - ekleme veya çıkarma işlemi
+      
       switch (output.startsWith("-")) {
         case true:
-          output = output.substring(1); // Eksi işaretini kaldır
+          output = output.substring(1); 
           break;
         case false:
-          output = "-" + output; // Eksi işareti ekle
+          output = "-" + output; 
           break;
       }
     } else if (value == ".") {
-      // Ondalık işaretine basıldığında
+      
       if (!output.contains(".")) {
         output += value;
       }
     } else {
-      // Sayı basıldığında
+      
       if (output == "") {
-        output = value; // İlk değer
+        output = value; 
       } else {
-        output += value; // Sonraki değerler
+        output += value; 
       }
     }
   });
@@ -85,24 +84,24 @@ void _calculate() {
       if (n2 != 0) {
         output = (n1 / n2).toString();
       } else {
-        output = "Error"; // Sıfıra bölme hatası
+        output = "Error"; 
       }
       break;
     case "%":
-      output = (n1 % n2).toString(); // Modül işlemi
+      output = (n1 % n2).toString(); 
       break;
   }
   
-  num1 = ""; // Hesaplama sonrası num1 ve num2 sıfırlanır
+  num1 = ""; 
   num2 = "";
   operation = "";
 }
 
-  // Buton widget'ı
+  
   Widget calcbutton(String btntxt, Color btncolor, Color txtcolor, double size) {
     return ElevatedButton(
       onPressed: () {
-        buttonPressed(btntxt); // Tuş tıklama işlemi
+        buttonPressed(btntxt); 
       },
       style: ElevatedButton.styleFrom(
         shape: CircleBorder(),
@@ -122,7 +121,7 @@ void _calculate() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF6A1B9A), // Mor arka plan
+      backgroundColor: Color(0xFF6A1B9A), 
       appBar: AppBar(
         title: Text('Calculator'),
         backgroundColor: Color(0xFF6A1B9A),
@@ -132,14 +131,14 @@ void _calculate() {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            // Ekran kısmı
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text(
-                    '$num1 $operation $output', // İşlem ve sayılar
+                    '$num1 $operation $output', 
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.white,
@@ -150,7 +149,6 @@ void _calculate() {
               ],
             ),
 
-            // İlk tuş satırı
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -161,7 +159,6 @@ void _calculate() {
               ],
             ),
 
-            // İkinci tuş satırı
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -172,7 +169,6 @@ void _calculate() {
               ],
             ),
 
-            // Üçüncü tuş satırı
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -183,7 +179,6 @@ void _calculate() {
               ],
             ),
 
-            // Dördüncü tuş satırı
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -194,7 +189,6 @@ void _calculate() {
               ],
             ),
 
-            // Beşinci tuş satırı
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

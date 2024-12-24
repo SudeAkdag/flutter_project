@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart'; 
-//import 'package:flutter_application_4/utils/todo_list.dart';
+
  
 
 class ToDoPage extends StatefulWidget {
@@ -17,14 +17,14 @@ class _ToDoPageState extends State<ToDoPage> {
     ['Drink coffee', false],
   ];
 
-  // Görev tamamlanma durumunu değiştiren fonksiyon
+
   void checkBoxChanged(int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
   }
 
-  // Yeni görev ekleyen fonksiyon
+ 
   void saveNewTask() {
     setState(() {
       toDoList.add([_controller.text, false]);
@@ -32,10 +32,10 @@ class _ToDoPageState extends State<ToDoPage> {
     });
   }
 
-  // Görev silme fonksiyonu
+  
   void deleteTask(int index) {
     setState(() {
-      toDoList.removeAt(index); // Belirtilen index'teki görevi siler
+      toDoList.removeAt(index); 
     });
   }
 
@@ -56,10 +56,10 @@ class _ToDoPageState extends State<ToDoPage> {
         itemCount: toDoList.length,
         itemBuilder: (BuildContext context, index) {
           return TodoList(
-            taskName: toDoList[index][0], // Görev adı
-            taskCompleted: toDoList[index][1], // Görev durumu
-            onChanged: (value) => checkBoxChanged(index), // Checkbox değişikliği
-            deleteFunction: (context) => deleteTask(index), // Silme fonksiyonu
+            taskName: toDoList[index][0], 
+            taskCompleted: toDoList[index][1], 
+            onChanged: (value) => checkBoxChanged(index), 
+            deleteFunction: (context) => deleteTask(index), 
           );
         },
       ),
@@ -131,10 +131,10 @@ class TodoList extends StatelessWidget {
           motion: const StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: deleteFunction, // Silme fonksiyonunu burada çağırıyoruz
+              onPressed: deleteFunction, 
               icon: Icons.delete,
-              backgroundColor: Colors.red, // Arka plan rengi
-              label: 'Delete', // Silme butonu etiketi
+              backgroundColor: Colors.red, 
+              label: 'Delete', 
             ),
           ],
         ),
@@ -149,7 +149,7 @@ class TodoList extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  // Checkbox
+                  
                   Checkbox(
                     value: taskCompleted,
                     onChanged: onChanged,

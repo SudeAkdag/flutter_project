@@ -31,8 +31,8 @@ class TodoList extends StatelessWidget {
             SlidableAction(
               onPressed: deleteFunction,
               icon: Icons.delete,
-              backgroundColor: Colors.red, // Arka plan rengi ekledim
-              label: 'Delete', // Kullanıcıya açıklayıcı bir etiket
+              backgroundColor: Colors.red,
+              label: 'Delete', 
             ),
           ],
         ),

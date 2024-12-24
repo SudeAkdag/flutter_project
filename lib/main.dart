@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MainPage(), // Ana sayfa
+      home: const MainPage(), 
     );
   }
 }
@@ -29,20 +29,20 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   final PageController _pageController = PageController();
-  bool _isLoggedIn = false; // Giriş durumu kontrolü
+  bool _isLoggedIn = false; 
 
-  // Giriş başarılı olduğunda yapılacak işlem
+  
   void _onLoginSuccess(bool isSuccess) {
     if (isSuccess) {
       setState(() {
-        _isLoggedIn = true; // Giriş başarılı olduğunda _isLoggedIn true olacak
+        _isLoggedIn = true; 
       });
-      _pageController.jumpToPage(1); // Giriş başarılıysa ToDoPage'e geç
+      _pageController.jumpToPage(1); 
     } else {
       setState(() {
-        _isLoggedIn = false; // Giriş başarısızsa LoginPage'e geri dönülür
+        _isLoggedIn = false; 
       });
-      _pageController.jumpToPage(0); // Giriş başarısızsa LoginPage'e dön
+      _pageController.jumpToPage(0); 
     }
   }
 
@@ -52,8 +52,8 @@ class MainPageState extends State<MainPage> {
       body: PageView(
         controller: _pageController,
         children: [
-          LoginPage(onLoginSuccess: _onLoginSuccess), // LoginPage'e giriş fonksiyonu gönderilir
-          if (_isLoggedIn) const ToDoPage(), // Giriş başarılıysa ToDoPage gösterilir
+          LoginPage(onLoginSuccess: _onLoginSuccess), 
+          if (_isLoggedIn) const ToDoPage(), 
         if (_isLoggedIn) CalculatorPage(),
         ],
       ),
